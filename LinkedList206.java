@@ -97,4 +97,18 @@ public class LinkedList206<T> {
 		head = null;
 		size = 0;
 	}
+
+	public T pop(){
+		return removeAt(size -1);
+
+	}
+
+	public boolean isEmpty(){
+		if (size == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }
