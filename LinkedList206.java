@@ -29,7 +29,6 @@ public class LinkedList206<T> {
 			System.out.println(current.data.toString());
 			current = current.next;
 		}
-		System.out.println("All pau!");
 	}
 	
 	public T get(int index) {
@@ -92,5 +91,10 @@ public class LinkedList206<T> {
 		T result = current.next.data;
 		current.next = current.next.next;		
 		return result;
+	}
+
+	public void clear(){
+		head = null;
+		size = 0;
 	}
 }
