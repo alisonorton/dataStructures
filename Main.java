@@ -11,7 +11,6 @@ public class Main {
 
 		//Looping through scanner input
 		while(s.hasNext()){
-			System.out.println("In WHILE loop");
 			String num = "";
 			String action = s.next();
 			if(action.equals("***")){
@@ -20,13 +19,22 @@ public class Main {
 			else if(action.equals("PUSH")){
 				num = s.next();
 				lnl.addNode(num);
-				System.out.println(num);
+				System.out.println("Adding: " + num);
 			}
 			else if(action.equals("POP")){
-				//BUG
-				lnl.removeAt(lnl.size-1);
+				System.out.println("Removing: " + num);
+				if(!lnl.isEmpty()){
+					//Do something
+					lnl.pop();
+				}
+				else{
+					System.out.println("EMPTY");
+				}
+				
+				
 			}
 			else if(action.equals("CLEAR")){
+				System.out.println("All clear!");
 				lnl.clear();
 			}
 			else if(action.equals("PRINT")){
