@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -9,40 +10,51 @@ public class Main {
 		//Linked List for storing data
 		LinkedList206<String> lnl = new LinkedList206<>();
 
-		//Looping through scanner input
-		while(s.hasNext()){
-			String num = "";
-			String action = s.next();
-			if(action.equals("***")){
-				break;
+		ArrayList<String> inputLines = new ArrayList<>();
+		String currentLine = s.nextLine();
+		inputLines.add(currentLine);
+
+		while(!currentLine.contains("***")){
+			currentLine = s.nextLine();
+			inputLines.add(currentLine);
+			
+		}
+		s.close();
+
+		//Checking to see if we stored all the data
+		for(int i = 0; i < inputLines.size(); i++){
+			System.out.println(inputLines.get(i));
+		}
+
+		System.out.println("Program Output\n");
+
+		for(int i = 0; i < inputLines.size(); i++){
+			if(inputLines.get(i).contains("PUSH")){
+				String data = inputLines.get(i).replace("PUSH ", "");
+				lnl.addNode(data);
 			}
-			else if(action.equals("PUSH")){
-				num = s.next();
-				lnl.addNode(num);
-				System.out.println("Adding: " + num);
-			}
-			else if(action.equals("POP")){
-				System.out.println("Removing: " + num);
-				if(!lnl.isEmpty()){
-					//Do something
-					lnl.pop();
+			else if (inputLines.get(i).contains("POP")){
+				if(lnl.isEmpty()){
+					System.out.println("Pop Empty");
 				}
 				else{
-					System.out.println("EMPTY");
+					String data = lnl.pop();
+					System.out.println(data);
+				}
+			}
+			else if (inputLines.get(i).contains("CLEAR")){
+				if(lnl.isEmpty()){
+					System.out.println("Clear Empty");
+				}
+				else{
+					lnl.clear();
 				}
 				
-				
 			}
-			else if(action.equals("CLEAR")){
-				System.out.println("All clear!");
-				lnl.clear();
-			}
-			else if(action.equals("PRINT")){
+			else if (inputLines.get(i).contains("PRINT")){
 				lnl.printAll();
 			}
 		}
-
-		lnl.printAll();
 		
 	}
 
