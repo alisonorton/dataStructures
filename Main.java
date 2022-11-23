@@ -10,6 +10,7 @@ public class Main {
 		//Linked List for storing data
 		LinkedList206<String> lnl = new LinkedList206<>();
 
+		//Storing input in array for easy parsing
 		ArrayList<String> inputLines = new ArrayList<>();
 		String currentLine = s.nextLine();
 		inputLines.add(currentLine);
@@ -23,14 +24,18 @@ public class Main {
 
 		System.out.println("Program Output\n");
 
+		//Checking the contents of each line and acting accordingly
+		//Contains stack and queue logic
 		for(int i = 0; i < inputLines.size(); i++){
+
+			//Stack logic
 			if(inputLines.get(i).contains("PUSH")){
 				String data = inputLines.get(i).replace("PUSH ", "");
 				lnl.addNode(data);
 			}
 			else if (inputLines.get(i).contains("POP")){
 				if(lnl.isEmpty()){
-					System.out.println("Pop Empty");
+					System.out.println("Empty");
 				}
 				else{
 					String data = lnl.pop();
@@ -39,7 +44,7 @@ public class Main {
 			}
 			else if (inputLines.get(i).contains("CLEAR")){
 				if(lnl.isEmpty()){
-					System.out.println("Clear Empty");
+					System.out.println("Empty");
 				}
 				else{
 					lnl.clear();
@@ -56,7 +61,6 @@ public class Main {
 					lnl.insertAt(0, data);
 				}
 				else{
-					//BUG
 					String data = inputLines.get(i).replace("ENQUEUE ", "");
 					lnl.insertAt(lnl.size, data);
 				}
@@ -68,7 +72,6 @@ public class Main {
 					System.out.println("Empty");
 				}
 				else{
-					String n = lnl.get(0);
 					String data = lnl.dequeue();
 					System.out.println(data);
 				}
