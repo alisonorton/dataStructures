@@ -100,7 +100,13 @@ public class LinkedList206<T> {
 
 	public T pop(){
 		return removeAt(size -1);
+	}
 
+	public T dequeue(){
+		size--;
+		T result = head.data;
+			head = head.next;
+			return result;
 	}
 
 	public boolean isEmpty(){

@@ -21,11 +21,6 @@ public class Main {
 		}
 		s.close();
 
-		//Checking to see if we stored all the data
-		for(int i = 0; i < inputLines.size(); i++){
-			System.out.println(inputLines.get(i));
-		}
-
 		System.out.println("Program Output\n");
 
 		for(int i = 0; i < inputLines.size(); i++){
@@ -53,6 +48,30 @@ public class Main {
 			}
 			else if (inputLines.get(i).contains("PRINT")){
 				lnl.printAll();
+			}
+			//Dequeue logic
+			else if(inputLines.get(i).contains("ENQUEUE")){
+				if(lnl.isEmpty()){
+					String data = inputLines.get(i).replace("ENQUEUE ", "");
+					lnl.insertAt(0, data);
+				}
+				else{
+					//BUG
+					String data = inputLines.get(i).replace("ENQUEUE ", "");
+					lnl.insertAt(lnl.size, data);
+				}
+				
+				
+			}
+			else if(inputLines.get(i).contains("DEQUEUE")){
+				if(lnl.isEmpty()){
+					System.out.println("Empty");
+				}
+				else{
+					String n = lnl.get(0);
+					String data = lnl.dequeue();
+					System.out.println(data);
+				}
 			}
 		}
 		
